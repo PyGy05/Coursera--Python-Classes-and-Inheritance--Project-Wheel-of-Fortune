@@ -189,27 +189,27 @@ playerIndex = 0
 winner = False
 
 def requestPlayerMove(player, category, guessed):
-    while True: # we're going to keep asking the player for a move until they give a valid one
-        time.sleep(0.1) # added so that any feedback is printed out before the next prompt
+    while True: 
+        time.sleep(0.1) 
 
         move = player.getMove(category, obscurePhrase(phrase, guessed), guessed)
         print("move: ", move)
-        move = move.upper() # convert whatever the player entered to UPPERCASE
+        move = move.upper() 
         if move == 'EXIT' or move == 'PASS':
             return move
-        elif len(move) == 1: # they guessed a character
-            if move not in LETTERS: # the user entered an invalid letter (such as @, #, or $)
+        elif len(move) == 1:
+            if move not in LETTERS: 
                 print('Guesses should be letters. Try again.')
                 continue
-            elif move in guessed: # this letter has already been guessed
+            elif move in guessed: 
                 print('{} has already been guessed. Try again.'.format(move))
                 continue
-            elif move in VOWELS and player.prizeMoney < VOWEL_COST: # if it's a vowel, we need to be sure the player has enough
+            elif move in VOWELS and player.prizeMoney < VOWEL_COST: 
                     print('Need ${} to guess a vowel. Try again.'.format(VOWEL_COST))
                     continue
             else:
                 return move
-        else: # they guessed the phrase
+        else: 
             return move
 
 
