@@ -67,8 +67,13 @@ class WOFComputerPlayer(WOFPlayer):
         if scf == True:
             return SORTED_FREQUENCIES[-1]
         elif scf ==False:
-            return random.choice(SORTED_FREQUENCIES())
+            return random.choice(SORTED_FREQUENCIES)
 
+# Here, SORTED_FREQUENCIES is a string and you are trying to call it as if it were a function (due to the parentheses).
+# This would raise a TypeError. The correct usage should be without the parentheses,
+# as SORTED_FREQUENCIES is a string from which you want to choose a character:
+# Incorrect Syntax: return random.choice(SORTED_FREQUENCIES())
+# Correct Syntax: return random.choice(SORTED_FREQUENCIES)
 
 
 
